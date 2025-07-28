@@ -8,12 +8,14 @@ public class UserInterface {
     }
 
     public void start() {
+        System.out.println("Welcome back! Ready to start a workout?");
+        System.out.print("Type yes/no: ");
+
         while (true) {
-            System.out.println("Welcome back! Ready to start a workout?");
-            System.out.print("Type yes/no: ");
             String readyOrNot = scanner.nextLine();
             if (readyOrNot.equals("yes")) {
-                System.out.println("Placeholder");
+                System.out.println("First Exercise: ");
+                String exerciseName = scanner.nextLine();
             } else if (readyOrNot.equals("no")){
                 System.out.println("You lazy bum!");
                 break;
