@@ -15,6 +15,7 @@ public class UserInterface {
             if (readyOrNot.equals("yes")) {
                 System.out.println("Placeholder");
             } else if (readyOrNot.equals("no")){
+                System.out.println("You lazy bum!");
                 break;
             }
         }
