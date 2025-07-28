@@ -1,10 +1,13 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
+    private ArrayList<Exercise> exercises;
 
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
+        this.exercises = new ArrayList<>();
     }
 
     public void start() {

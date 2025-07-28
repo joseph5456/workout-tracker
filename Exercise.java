@@ -8,4 +8,6 @@ public class Exercise {
         this.sets = sets;
         this.reps = reps;
     }
+
+
 }
