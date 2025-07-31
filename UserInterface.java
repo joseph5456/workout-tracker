@@ -16,35 +16,40 @@ public class UserInterface {
         System.out.print("Type yes/no: ");
 
         while (true) {
-            String readyOrNot = scanner.nextLine();
-            if (readyOrNot.equals("yes")) {
-                System.out.println("First Exercise: ");
-                String exerciseName = scanner.nextLine();
-                System.out.println("Number of sets: ");
-                int sets = Integer.valueOf(scanner.nextLine());
+            String input = scanner.nextLine();
+            if (input.equals("yes")) {
+                int exerciseNum = 1;
 
-                int maxReps = 0;
-                int maxWeight = 0;
-                for (int i = 1; i <= sets; i++) {
-                    System.out.print("Please enter weight for set " + i + ": ");
-                    int weight = Integer.valueOf(scanner.nextLine());
-                    if (weight > maxWeight) {
-                        maxWeight = weight;
+                while (true) {
+                    System.out.println("Exercise " + exerciseNum + ":");
+                    String exerciseName = scanner.nextLine();
+                    System.out.println("Number of sets: ");
+                    int sets = Integer.valueOf(scanner.nextLine());
+
+                    int maxReps = 0;
+                    int maxWeight = 0;
+                    for (int i = 1; i <= sets; i++) {
+                        System.out.print("Please enter weight for set " + i + ": ");
+                        int weight = Integer.valueOf(scanner.nextLine());
+                        if (weight > maxWeight) {
+                            maxWeight = weight;
+                        }
+
+                        System.out.print("Please enter number of reps for set " + i + ": ");
+                        int reps = Integer.valueOf(scanner.nextLine());
+                        if (reps > maxReps) {
+                            maxReps = reps;
+                        }
                     }
 
-                    System.out.print("Please enter number of reps for set " + i + ": ");
-                    int reps = Integer.valueOf(scanner.nextLine());
-                    if (reps > maxReps) {
-                        maxReps = reps;
-                    }
+                    //create exercise object and add to list
+                    Exercise exercise = new Exercise(exerciseName, sets, maxReps, maxWeight);
+                    exercises.add(exercise);
+                    System.out.println(exercise);
+                    exerciseNum++;
                 }
 
-                //create exercise object and add to list
-                Exercise exercise1 = new Exercise(exerciseName, sets, maxReps, maxWeight);
-                exercises.add(exercise1);
-                System.out.println(exercise1);
-
-            } else if (readyOrNot.equals("no")){
+            } else if (input.equals("no")){
                 System.out.println("You lazy bum!");
                 break;
             }
