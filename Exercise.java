@@ -11,6 +11,10 @@ public class Exercise {
         this.weight = weight;
     }
 
+    public int getVolume() {
+        return sets * reps * weight;
+    }
+
 
     public String toString() {
         return "Exercise: " + exerciseName + "\nBest Weight: " +

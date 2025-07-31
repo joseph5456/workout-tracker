@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,25 +20,25 @@ public class UserInterface {
                 int exerciseNum = 1;
 
                 while (true) {
-                    System.out.println("Exercise " + exerciseNum + ":");
+                    System.out.println("\nExercise " + exerciseNum + ":");
                     String exerciseName = scanner.nextLine();
                     if (exerciseName.equals("stop")) {
                         break;
                     }
                     System.out.println("Number of sets: ");
-                    int sets = Integer.valueOf(scanner.nextLine());
+                    int sets = Integer.parseInt(scanner.nextLine());
 
                     int maxReps = 0;
                     int maxWeight = 0;
                     for (int i = 1; i <= sets; i++) {
                         System.out.print("Please enter weight for set " + i + ": ");
-                        int weight = Integer.valueOf(scanner.nextLine());
+                        int weight = Integer.parseInt(scanner.nextLine());
                         if (weight > maxWeight) {
                             maxWeight = weight;
                         }
 
                         System.out.print("Please enter number of reps for set " + i + ": ");
-                        int reps = Integer.valueOf(scanner.nextLine());
+                        int reps = Integer.parseInt(scanner.nextLine());
                         if (reps > maxReps) {
                             maxReps = reps;
                         }
@@ -57,9 +56,18 @@ public class UserInterface {
                 break;
             }
         }
-        System.out.println("\nSummary: \n-------------------------");
-        for (Exercise exercise : exercises) {
-            System.out.println(exercise);
+
+        if (!exercises.isEmpty()) {
+            System.out.println("\nSummary: \n-------------------------");
+            for (Exercise exercise : exercises) {
+                System.out.println(exercise);
+            }
+
+            int totalVolume = 0;
+            for (Exercise exercise : exercises) {
+                totalVolume += exercise.getVolume();
+            }
+            System.out.println("Total volume lifted: " + totalVolume + " lbs");
         }
     }
 }
