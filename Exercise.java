@@ -13,8 +13,8 @@ public class Exercise {
 
 
     public String toString() {
-        return "\nSummary: \n------------------------------\nExercise: " + exerciseName + "\nWeight: " +
-                weight + "\nSets: " + sets + "\nReps: " + reps;
+        return "Exercise: " + exerciseName + "\nBest Weight: " +
+                weight + "\nBest Reps: " + reps +"\nSets: " + sets + "\n-------------------------";
     }
 
 }

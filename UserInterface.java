@@ -23,6 +23,9 @@ public class UserInterface {
                 while (true) {
                     System.out.println("Exercise " + exerciseNum + ":");
                     String exerciseName = scanner.nextLine();
+                    if (exerciseName.equals("stop")) {
+                        break;
+                    }
                     System.out.println("Number of sets: ");
                     int sets = Integer.valueOf(scanner.nextLine());
 
@@ -45,14 +48,18 @@ public class UserInterface {
                     //create exercise object and add to list
                     Exercise exercise = new Exercise(exerciseName, sets, maxReps, maxWeight);
                     exercises.add(exercise);
-                    System.out.println(exercise);
                     exerciseNum++;
                 }
+                break;
 
             } else if (input.equals("no")){
                 System.out.println("You lazy bum!");
                 break;
             }
+        }
+        System.out.println("\nSummary: \n-------------------------");
+        for (Exercise exercise : exercises) {
+            System.out.println(exercise);
         }
     }
 }
