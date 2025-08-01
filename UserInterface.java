@@ -3,13 +3,11 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
-    //private ArrayList<Exercise> exercises;
     private ArrayList<Workout> workouts;
     private Workout workout;
 
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
-        //this.exercises = new ArrayList<>();
         this.workouts = new ArrayList<>();
     }
 
@@ -67,7 +65,8 @@ public class UserInterface {
 
     public void printSummary() {
         if (workout != null && !this.workout.getExercises().isEmpty()) {
-            System.out.println("\nSummary: \n-------------------------");
+            System.out.println("\nWorkout Summary: \n-------------------------");
+            System.out.println(workout.getWorkoutName() + "\n-------------------------");
             for (Exercise exercise : workout.getExercises()) {
                 System.out.println(exercise);
             }

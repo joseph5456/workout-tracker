@@ -17,4 +17,8 @@ public class Workout {
         exercises.add(exercise);
     }
 
+    public String getWorkoutName() {
+        return this.workoutName;
+    }
+
 }
