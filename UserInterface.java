@@ -85,8 +85,10 @@ public class UserInterface {
 
             //for calculating total volume
             double totalVolume = 0;
-            for (Exercise exercise : workout.getExercises()) {
-                totalVolume += exercise.getVolume();
+            for (Workout workout : workouts) {
+                for (Exercise exercise : this.workout.getExercises()) {
+                    totalVolume += exercise.getVolume();
+                }
             }
             System.out.println("Total volume lifted: " + totalVolume + " lbs");
         }
