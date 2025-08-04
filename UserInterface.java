@@ -51,13 +51,13 @@ public class UserInterface {
             int maxReps = 0;
             double maxWeight = 0;
             for (int i = 1; i <= sets; i++) {
-                System.out.print("Please enter weight for set " + i + ": ");
+                System.out.print("Weight for set " + i + ": ");
                 double weight = Integer.parseInt(scanner.nextLine());
                 if (weight > maxWeight) {
                     maxWeight = weight;
                 }
 
-                System.out.print("Please enter number of reps for set " + i + ": ");
+                System.out.print("Number of reps for set " + i + ": ");
                 int reps = Integer.parseInt(scanner.nextLine());
                 if (reps > maxReps) {
                     maxReps = reps;
