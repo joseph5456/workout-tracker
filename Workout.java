@@ -21,4 +21,8 @@ public class Workout {
         return this.workoutName;
     }
 
+    public String toString() {
+        return this.workoutName;
+    }
+
 }
