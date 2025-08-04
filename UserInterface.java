@@ -69,16 +69,21 @@ public class UserInterface {
             workout.addExercise(exercise);
             exerciseNum++;
         }
+        workouts.add(workout);
     }
 
     public void printSummary() {
-        if (workout != null && !this.workout.getExercises().isEmpty()) {
+        if (this.workout != null && !this.workout.getExercises().isEmpty()) {
             System.out.println("\nWorkout Summary: \n-------------------------");
-            System.out.println(workout.getWorkoutName() + "\n-------------------------");
-            for (Exercise exercise : workout.getExercises()) {
-                System.out.println(exercise);
+
+            for (Workout workout : workouts) {
+                System.out.println(workout + "\n-------------------------");
+                for (Exercise exercise : this.workout.getExercises()) {
+                    System.out.println(exercise);
+                }
             }
 
+            //for calculating total volume
             double totalVolume = 0;
             for (Exercise exercise : workout.getExercises()) {
                 totalVolume += exercise.getVolume();
