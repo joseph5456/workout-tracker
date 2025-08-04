@@ -12,12 +12,20 @@ public class UserInterface {
     }
 
     public void start() {
-        System.out.println("Welcome back! Ready to start a workout?");
-        System.out.print("Type yes/no: ");
+        System.out.println("Welcome back! Ready to start a workout? \nType yes/no");
         String input = scanner.nextLine();
 
         if (input.equals("yes")) {
             logWorkout();
+            while (true) {
+                System.out.println("Would you like to start another workout? \nType yes/no");
+                String input2 = scanner.nextLine();
+                if (input2.equals("yes")) {
+                    logWorkout();
+                } else if (input2.equals("no")) {
+                    break;
+                }
+            }
             printSummary();
         } else if (input.equals("no")) {
             System.out.println("You lazy bum!");
@@ -41,10 +49,10 @@ public class UserInterface {
             int sets = Integer.parseInt(scanner.nextLine());
 
             int maxReps = 0;
-            int maxWeight = 0;
+            double maxWeight = 0;
             for (int i = 1; i <= sets; i++) {
                 System.out.print("Please enter weight for set " + i + ": ");
-                int weight = Integer.parseInt(scanner.nextLine());
+                double weight = Integer.parseInt(scanner.nextLine());
                 if (weight > maxWeight) {
                     maxWeight = weight;
                 }
@@ -71,7 +79,7 @@ public class UserInterface {
                 System.out.println(exercise);
             }
 
-            int totalVolume = 0;
+            double totalVolume = 0;
             for (Exercise exercise : workout.getExercises()) {
                 totalVolume += exercise.getVolume();
             }

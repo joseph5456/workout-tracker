@@ -2,16 +2,16 @@ public class Exercise {
     String exerciseName;
     private int reps;
     private int sets;
-    private int weight;
+    private double weight;
 
-    public Exercise(String exerciseName, int sets, int reps, int weight) {
+    public Exercise(String exerciseName, int sets, int reps, double weight) {
         this.exerciseName = exerciseName;
         this.sets = sets;
         this.reps = reps;
         this.weight = weight;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return sets * reps * weight;
     }
 
