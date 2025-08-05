@@ -13,6 +13,12 @@ public class Workout {
         return this.exercises;
     }
 
+    public void printExercises() {
+        for (Exercise exercise : exercises) {
+            System.out.println(exercise);
+        }
+    }
+
     public void addExercise(Exercise exercise) {
         exercises.add(exercise);
     }
