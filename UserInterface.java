@@ -12,10 +12,11 @@ public class UserInterface {
     }
 
     public void start() {
-        System.out.println("Welcome back! Ready to start a workout? \nType yes/no");
+        System.out.println("Welcome back!\n1. Start Workout\n2. View Previous Workouts\n3. Exit");
+        System.out.print("\nChoose an option: ");
         String input = scanner.nextLine();
 
-        if (input.equals("yes")) {
+        if (input.equals("1")) {
             logWorkout();
             while (true) {
                 System.out.println("Would you like to start another workout? \nType yes/no");
@@ -27,7 +28,7 @@ public class UserInterface {
                 }
             }
             printSummary();
-        } else if (input.equals("no")) {
+        } else if (input.equals("3")) {
             System.out.println("You lazy bum!");
         }
     }
