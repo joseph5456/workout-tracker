@@ -95,7 +95,7 @@ public class UserInterface {
 
             for (Workout workout : workouts) {
                 System.out.println(workout + "\n-------------------------");
-                for (Exercise exercise : this.workout.getExercises()) {
+                for (Exercise exercise : workout.getExercises()) {
                     System.out.println(exercise);
                 }
             }
@@ -103,7 +103,7 @@ public class UserInterface {
             //for calculating total volume
             double totalVolume = 0;
             for (Workout workout : workouts) {
-                for (Exercise exercise : this.workout.getExercises()) {
+                for (Exercise exercise : workout.getExercises()) {
                     totalVolume += exercise.getVolume();
                 }
             }

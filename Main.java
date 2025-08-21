@@ -1,22 +1,36 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String [] args) {
         Scanner scanner = new Scanner(System.in);
+        UserInterface ui = new UserInterface(scanner);
 
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-            writer.write("Writing to a file.");
-            writer.write("\nAnother line");
+        //bufferedwriter: allows you to write into files
+        /*try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("/Users/jnguyen/Desktop/Test/output.txt"));
+            writer.write("karen");
+            writer.write("\nchad");
+            writer.write("\nbecky");
             writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            return;
         }
 
-        UserInterface ui = new UserInterface(scanner);
+
+        //reads file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("/Users/jnguyen/Desktop/Test/output.txt"));
+            String s;
+            while ((s = reader.readLine()) != null) {
+                System.out.println(s);
+            }
+            reader.close();
+        } catch(Exception ex) {
+            return;
+        }
+
+        UserInterface ui = new UserInterface(scanner);*/
 
 
         ui.start();
