@@ -12,40 +12,34 @@ public class UserInterface {
     }
 
     public void start() {
-        System.out.println("Welcome back!\n1. Start Workout\n2. View Previous Workouts\n3. Exit");
-        System.out.print("\n> ");
-        String input = scanner.nextLine();
-
-        if (input.equals("1")) {
-            logWorkout();
-            //loops the menu after first workout
-            menuLoop:
-            while (true) {
-                System.out.println("1. Start Another Workout\n2. View Previous Workouts\n3. Exit");
-                System.out.print("\n> ");
-                String input2 = scanner.nextLine();
-                //switch statement to get rid of repeated if statements
-                switch (input2) {
-                    case "1":
-                        logWorkout();
-                        break;
-                    case "2":
+        menuLoop:
+        //loops the menu after first workout
+        while (true) {
+            System.out.println("1. Start Another Workout\n2. View Previous Workouts\n3. Exit");
+            System.out.print("\n> ");
+            String input = scanner.nextLine();
+            //switch statement to get rid of repeated if statements
+            switch (input) {
+                case "1":
+                    logWorkout();
+                    break;
+                case "2":
+                    if (workouts.isEmpty()) {
+                        System.out.println("No workouts to display!");
+                    } else {
                         for (Workout workout : workouts) {
                             System.out.println(workout);
-                            this.workout.printExercises();
+                            workout.printExercises();
                         }
-                        break;
-                    case "3":
-                        break menuLoop;
-                }
+                    }
+                    break;
+                case "3":
+                    printSummary();
+                    System.out.println("You lazy bum!");
+                    break menuLoop;
+                default:
+                    System.out.println("Invalid choice, try again.");
             }
-            printSummary();
-        } else if (input.equals("2")){
-            if (workouts.isEmpty()) {
-                System.out.println("\nNo previous workouts to display!");
-            }
-        } else if (input.equals("3")) {
-            System.out.println("You lazy bum!");
         }
     }
 
