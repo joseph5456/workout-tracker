@@ -1,24 +1,35 @@
-public class Exercise {
-    String exerciseName;
-    private int reps;
-    private int sets;
-    private double weight;
+import java.util.ArrayList;
 
-    public Exercise(String exerciseName, int sets, int reps, double weight) {
+public class Exercise {
+    private String exerciseName;
+    private ArrayList<Set> sets;
+
+    public Exercise(String exerciseName) {
         this.exerciseName = exerciseName;
-        this.sets = sets;
-        this.reps = reps;
-        this.weight = weight;
+        this.sets = new ArrayList<>();
     }
 
+    public void addSet(double weight, int reps) {
+        sets.add(new Set(weight, reps));
+    }
     public double getVolume() {
-        return sets * reps * weight;
+        double total = 0;
+        for (Set s : sets) {
+            total += s.getVolume();
+        }
+        return total;
     }
 
 
     public String toString() {
-        return "Exercise: " + exerciseName + "\nBest Weight: " +
-                weight + "\nBest Reps: " + reps +"\nSets: " + sets + "\n-------------------------";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Exercise: ").append(exerciseName).append("\n");
+        int i = 1;
+        for (Set s : sets) {
+            sb.append("\tSet ").append(i++).append(": ").append(s).append("\n");
+        }
+        sb.append("\tVolume: ").append(getVolume()).append(" lbs\n").append("-------------------------");
+        return sb.toString();
     }
 
 }

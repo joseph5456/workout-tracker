@@ -15,7 +15,7 @@ public class UserInterface {
         menuLoop:
         //loops the menu after first workout
         while (true) {
-            System.out.println("1. Start Another Workout\n2. View Previous Workouts\n3. Exit");
+            System.out.println("1. Start A Workout\n2. View Previous Workouts\n3. Exit");
             System.out.print("\n> ");
             String input = scanner.nextLine();
             //switch statement to get rid of repeated if statements
@@ -34,8 +34,11 @@ public class UserInterface {
                     }
                     break;
                 case "3":
+                    if (this.workouts.isEmpty()) {
+                        System.out.println("You lazy bum!");
+
+                    }
                     printSummary();
-                    System.out.println("You lazy bum!");
                     break menuLoop;
                 default:
                     System.out.println("Invalid choice, try again.");
@@ -53,30 +56,23 @@ public class UserInterface {
         while (true) {
             System.out.println("\nExercise " + exerciseNum + ":");
             String exerciseName = scanner.nextLine();
-            if (exerciseName.equals("stop")) {
-                break;
-            }
+            if (exerciseName.equals("stop")) break;
+
+            Exercise exercise = new Exercise(exerciseName);
+
             System.out.println("Number of sets: ");
             int sets = Integer.parseInt(scanner.nextLine());
 
-            int maxReps = 0;
-            double maxWeight = 0;
             for (int i = 1; i <= sets; i++) {
                 System.out.print("Weight for set " + i + ": ");
-                double weight = Integer.parseInt(scanner.nextLine());
-                if (weight > maxWeight) {
-                    maxWeight = weight;
-                }
+                double weight = Double.parseDouble(scanner.nextLine());
 
                 System.out.print("Number of reps for set " + i + ": ");
                 int reps = Integer.parseInt(scanner.nextLine());
-                if (reps > maxReps) {
-                    maxReps = reps;
-                }
+
+                exercise.addSet(weight, reps);
             }
 
-            //create exercise object and add to list
-            Exercise exercise = new Exercise(exerciseName, sets, maxReps, maxWeight);
             workout.addExercise(exercise);
             exerciseNum++;
         }
@@ -104,5 +100,4 @@ public class UserInterface {
             System.out.println("Total volume lifted: " + totalVolume + " lbs");
         }
     }
-
 }

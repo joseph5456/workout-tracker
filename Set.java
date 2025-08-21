@@ -12,6 +12,6 @@ public class Set {
     }
 
     public String toString() {
-        return weight + " lbs" + reps + " reps";
+        return weight + " lbs x " + reps + " reps";
     }
 }

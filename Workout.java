@@ -28,7 +28,7 @@ public class Workout {
     }
 
     public String toString() {
-        return this.workoutName;
+        return "Workout: " + this.workoutName;
     }
 
 }
