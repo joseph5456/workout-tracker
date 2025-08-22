@@ -2,10 +2,6 @@ import java.io.*;
 
 public class FileManager {
 
-    public FileManager() {
-
-    }
-
     public void saveWorkout(String workout) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("workouts.txt"));
