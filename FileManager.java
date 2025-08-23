@@ -3,10 +3,10 @@ import java.io.*;
 public class FileManager {
 
     public void saveWorkout(String workout) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("workouts.txt"));
-            writer.write(workout + "\n");
-        } catch (IOException e) {
+           try (BufferedWriter writer = new BufferedWriter(new FileWriter("workouts.txt", true))) {
+               writer.write(workout);
+               writer.newLine();
+           } catch (IOException e) {
             e.printStackTrace();
         }
     }
