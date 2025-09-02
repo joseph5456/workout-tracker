@@ -27,13 +27,48 @@ public class FileManager {
     }
 
     //Load workouts into a list
-    public ArrayList<String> loadWorkout() {
-        ArrayList<String> workouts = new ArrayList<>();
+    public ArrayList<Workout> loadWorkout() {
+        ArrayList<Workout> workouts = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("workouts.txt"))) {
             String line;
+            Workout currentWorkout = null;
+            Exercise currentExercise = null;
+
             while ((line = reader.readLine()) != null) {
-                workouts.add(line);
+                if (line.startsWith("Workout:")) {
+                    if (currentWorkout != null) {
+                        workouts.add(currentWorkout);
+                    }
+                    String workoutName = line.substring(8).trim();
+                    currentWorkout = new Workout(workoutName);
+
+                } else if (line.startsWith("Exercise:")) {
+                    String exerciseName = line.substring(9).trim();
+                    currentExercise = new Exercise(exerciseName);
+                    if (currentWorkout != null) {
+                        currentWorkout.addExercise(currentExercise);
+                    }
+
+                } else if (line.startsWith("Set:")) {
+                    String[] parts = line.substring(4).split(",");
+                    double weight = Double.parseDouble(parts[0].trim());
+                    int reps = Integer.parseInt(parts[1].trim());
+                    if (currentExercise != null) {
+                        currentExercise.addSet(weight, reps);
+                    }
+
+                } else if (line.equals("---")) {
+                    if (currentWorkout != null) {
+                        workouts.add(currentWorkout);
+                        currentWorkout = null;
+                    }
+                }
             }
+
+            if (currentWorkout != null) {
+                workouts.add(currentWorkout);
+            }
+
         } catch (FileNotFoundException e) {
             System.out.println("No workouts found");
         } catch (IOException e ) {
