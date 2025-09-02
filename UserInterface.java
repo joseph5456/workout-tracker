@@ -12,6 +12,9 @@ public class UserInterface {
     }
 
     public void start() {
+        FileManager fm = new FileManager();
+        workouts = fm.loadWorkout(); //load existing workouts
+
         menuLoop:
         //loops the menu after first workout
         while (true) {
@@ -77,6 +80,9 @@ public class UserInterface {
             exerciseNum++;
         }
         workouts.add(workout);
+
+        FileManager fm = new FileManager();
+        fm.saveWorkout(workout); //saves workout to file
     }
 
     public void printSummary() {
