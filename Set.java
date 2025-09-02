@@ -7,6 +7,13 @@ public class Set {
         this.reps = reps;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getReps() {
+        return reps;
+    }
     public double getVolume() {
         return weight * reps;
     }
