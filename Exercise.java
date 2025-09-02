@@ -12,6 +12,14 @@ public class Exercise {
     public void addSet(double weight, int reps) {
         sets.add(new Set(weight, reps));
     }
+
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public ArrayList<Set> getSets() {
+        return sets;
+    }
     public double getVolume() {
         double total = 0;
         for (Set s : sets) {
@@ -19,7 +27,6 @@ public class Exercise {
         }
         return total;
     }
-
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
