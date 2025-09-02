@@ -4,9 +4,22 @@ import java.util.ArrayList;
 
 public class FileManager {
 
-    public void saveWorkout(String workout) {
+    public void saveWorkout(Workout workout) {
            try (BufferedWriter writer = new BufferedWriter(new FileWriter("workouts.txt", true))) {
-               writer.write(workout);
+               writer.write("Workout:" + workout.getWorkoutName());
+               writer.newLine();
+
+               for (Exercise exercise : workout.getExercises()) {
+                   writer.write("Exercise: " + exercise.getExerciseName());
+                   writer.newLine();
+
+                   for (Set set : exercise.getSets()) {
+                       writer.write("Set:" + set.getWeight() + "," + set.getReps());
+                       writer.newLine();
+                   }
+               }
+
+               writer.write("---");
                writer.newLine();
            } catch (IOException e) {
             e.printStackTrace();
