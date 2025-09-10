@@ -1,4 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -30,6 +33,7 @@ public class UserInterface {
                     if (workouts.isEmpty()) {
                         System.out.println("No workouts to display!");
                     } else {
+                        //System.out.println(LocalDateTime.now());
                         for (Workout workout : workouts) {
                             System.out.println(workout);
                             workout.printExercises();
@@ -93,6 +97,7 @@ public class UserInterface {
     }
 
     public void printSummary() {
+        java.time.LocalDateTime.now();
         if (this.workout != null && !this.workout.getExercises().isEmpty()) {
             System.out.println("\nWorkout Summary: \n-------------------------");
 
