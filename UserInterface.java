@@ -18,7 +18,7 @@ public class UserInterface {
         menuLoop:
         //loops the menu after first workout
         while (true) {
-            System.out.println("1. Start A Workout\n2. View Previous Workouts\n3. Exit");
+            System.out.println("1. Start A Workout\n2. View Previous Workouts\n3. Clear Workouts\n4. Exit");
             System.out.print("\n> ");
             String input = scanner.nextLine();
             //switch statement to get rid of repeated if statements
@@ -37,6 +37,13 @@ public class UserInterface {
                     }
                     break;
                 case "3":
+                    if (workouts.isEmpty()) {
+                        System.out.println("No workouts to clear!");
+                    } else {
+                        fm.clearWorkouts();
+                    }
+                    break;
+                case "4":
                     if (this.workouts.isEmpty()) {
                         System.out.println("You lazy bum!");
 
