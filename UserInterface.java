@@ -75,7 +75,14 @@ public class UserInterface {
             Exercise exercise = new Exercise(exerciseName);
 
             System.out.println("Number of sets: ");
-            int sets = Integer.parseInt(scanner.nextLine());
+
+            int sets = 0;
+            while (sets <= 0) {
+                sets = Integer.parseInt(scanner.nextLine());
+                if (sets <= 0) {
+                    System.out.println("Invalid number of sets, please input a valid number.");
+                }
+            }
 
             for (int i = 1; i <= sets; i++) {
                 System.out.print("Weight for set " + i + ": ");

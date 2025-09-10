@@ -1,0 +1,4 @@
+Workout:Push
+Exercise: bench press
+Set:225.0,15
+---
